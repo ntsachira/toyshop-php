@@ -1,0 +1,179 @@
+@font-face {
+  font-family: 'ConcertOne';
+  src: url('font/ConcertOne-Regular.ttf');    
+}
+
+@font-face{
+    font-family: 'Mooli';
+    src: url('font/Mooli-Regular.ttf');
+}
+
+*{
+    font-family: 'Mooli';
+}
+
+.logo-text{
+    font-family: 'ConcertOne';    
+    color:#fb8500;
+    text-decoration: none;    
+}
+
+/* text colors */
+.text-orange{
+    color:#fb8500;
+}
+
+.text-default{
+    color:#023047;
+}
+
+.text-blue{
+    color:#219ebc;
+}
+
+.text-yellow{
+    color:#ffb703;
+}
+
+.text-lblue{
+    color:#8ecae6;
+}
+/* text colors */
+
+/* max content width */
+.max-width{
+    max-width: 1440px;
+}
+/* max content width */
+
+/* background colors */
+.bg-orange{
+    background-color:#fb5c00;
+}
+
+.bg-default{
+    background-color:#023047;
+}
+
+.bg-blue{
+    background-color:#219ebc;
+}
+
+.bg-yellow{
+    background-color:#ffb703;
+}
+
+.bg-lblue{
+    background-color:#dbedf6;
+}
+/* background colors */
+
+/* button colors */
+.btn-orange{
+    background-color:#fb8500;
+    border-color:#fb8500;
+    color:#fff;
+}
+
+.btn-orange:hover{
+    background-color:#e27900;
+    border-color:#e27900;
+    color:#fff;
+}
+
+.btn-default{
+    background-color:#023047;
+    border-color:#023047;
+    color:#fff;
+}
+
+.btn-default:hover{
+    background-color:#001d2f;
+    border-color:#001d2f;
+    color:#fff;
+}
+
+.btn-blue{
+    background-color:#1f8da8;
+    border-color:#219ebc;
+    color:#fff;
+}
+
+.btn-blue:hover{
+    background-color:#0c7489;
+    border-color:#0c7489;
+    color:#fff;
+}
+
+.btn-yellow{
+    background-color:#ffb703;
+    border-color:#ffb703;
+    color:#fff;
+}
+
+.btn-yellow:hover{
+    background-color:#d48c00;
+    border-color:#d48c00;
+    color:#fff;
+}
+/* button colors */
+
+.header-link{
+    text-decoration: none;
+    color: black;
+}
+
+.header-link:hover{
+    color: #e27900;
+}
+
+.product-image:hover{   
+    cursor: pointer;
+}
+
+.curser-pointer{
+    cursor: pointer;
+}
+
+.magnify {
+    transition: transform .2s; /* Animation */
+  }
+  
+  .magnify:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+  .curser-zoom {
+    cursor: zoom-in;
+}
+
+.card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.tab-btn:hover{
+    background-color: #c4f7ff;  
+    transition-duration: 100ms; 
+}
+
+.footer-text{
+    color:#001d2f;
+}
+
+.footer-text:hover{
+    color:#219ebc;
+}
+
+.hover-orange{
+    color: white;
+}
+.hover-orange:hover{
+    color: aqua;
+    
+}
+
