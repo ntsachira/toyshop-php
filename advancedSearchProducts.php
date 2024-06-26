@@ -62,20 +62,10 @@ include_once "connection.php";
                 if(isset($_GET["price_sort"]) && $_GET["price_sort"] != 0 && $_GET["price_sort"] != ""){
                     $price_sort = $_GET["price_sort"];
                     if($_GET["price_sort"] == "range"){
-                        if(isset($_GET["min_price"]) && isset($_GET["max_price"]) && $_GET["min_price"] != "" && $_GET["max_price"] != ""){
-                            $max_price = $_GET["max_price"];
-                            $min_price = $_GET["min_price"];
-                            $priceRange = " AND `price` BETWEEN ".$_GET["min_price"]." AND ".$_GET["max_price"]." ";
-                        }else{
-                            ?>
-                            <script>
-                                alert("Price filter could not perform");
-                            </script>
-                            <?php
-                        }
+                       
                         
                     }else{
-                        $order = "ASC";
+                        $order = "ASC";                        
 
                         if($_GET["price_sort"] == "ASC"){
                             $sort = "Price lowest first ";
@@ -87,6 +77,20 @@ include_once "connection.php";
                         $sortOption = " ORDER BY `price` ".$order." ";
                     }
                    
+                }
+
+                if(isset($_GET["min_price"]) && isset($_GET["max_price"]) && $_GET["min_price"] != "" && $_GET["max_price"] != "" && ($_GET["min_price"] != 0 || $_GET["max_price"] != 0)){
+                    $max_price = $_GET["max_price"];
+                    $min_price = $_GET["min_price"];
+
+                    $priceRange = " AND `price` BETWEEN ".$_GET["min_price"]." AND ".$_GET["max_price"]." ";
+
+                    if($min_price == 10000){
+                        $priceRange = " AND `price` > ".$_GET["min_price"]." ";
+                    }
+                   
+                }else{
+                   $priceRange = "";
                 }
                     
                 if(isset($_GET["cond"]) && $_GET["cond"] != 0 && $_GET["cond"] != "" ){
@@ -143,17 +147,17 @@ include_once "connection.php";
                             <select class="form-select rounded-5" style="min-width:15rem;" name="" id="price-range-select"
                             onchange="filterPriceAdvancedSearch('<?php echo $key ?>','<?php echo $category ?>','<?php echo $price_sort ?>',
                             '<?php echo $max_price ?>','<?php echo $min_price ?>','<?php echo $cond ?>','<?php echo $product_per_page ?>','<?php echo $page_no ?>');">
-                                <option value="All prices">All prices</option>
-                                <option value="Under Rs.2000">Under Rs.2000</option>
-                                <option value="Rs.2000 to Rs.10,000">Rs.2000 to Rs.10,000</option>
-                                <option value="Over Rs.10,000">Over Rs.10,000</option>
+                                <option <?php if($_GET["max_price"]==0 && $_GET["min_price"] == 0){ ?>selected<?php }?> value="All prices">All prices</option>
+                                <option <?php if($_GET["max_price"]==2000 && $_GET["min_price"] == 0){ ?>selected<?php }?> value="Under Rs.2000">Under Rs.2000</option>
+                                <option <?php if($_GET["max_price"]==10000 && $_GET["min_price"] == 2000){ ?>selected<?php }?> value="Rs.2000 to Rs.10,000">Rs.2000 to Rs.10,000</option>
+                                <option <?php if($_GET["max_price"]==0 && $_GET["min_price"] ==10000){ ?>selected<?php }?> value="Over Rs.10,000">Over Rs.10,000</option>
                             </select>
 
                             <select class="form-select rounded-5" style="min-width:15rem;" name="" id="order-select"
                             onchange="filterOrderAdvancedSearch('<?php echo $key ?>','<?php echo $category ?>','<?php echo $price_sort ?>',
                             '<?php echo $max_price ?>','<?php echo $min_price ?>','<?php echo $cond ?>','<?php echo $product_per_page ?>','<?php echo $page_no ?>');">
-                                <option value="Price heighest first">Price heighest first</option>
-                                <option value="Price lowest first">Price lowest first</option>                                
+                                <option <?php if($_GET["price_sort"]=="DESC"){ ?>selected<?php }?> value="Price heighest first">Price heighest first</option>
+                                <option <?php if($_GET["price_sort"]=="ASC"){ ?>selected<?php }?> value="Price lowest first">Price lowest first</option>                                
                             </select>
                         </div>               
 

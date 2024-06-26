@@ -934,15 +934,34 @@ function filterConditionAdvancedSearch(key,cat,price_sort,max_price,min_price,co
   window.location.href = "?key="+key+"&cat="+cat+"&price_sort="+price_sort+"&max_price="+max_price+"&min_price="
   +min_price+"&cond="+condition+"&no_of_results="+no_of_results+"&page="+page;
 }
+
 function filterPriceAdvancedSearch(key,cat,price_sort,max_price,min_price,cond,no_of_results,page){
-  let condition = document.getElementById("price-range-select").value;
-  window.location.href = "?key="+key+"&cat="+cat+"&price_sort="+price_sort+"&max_price="+max_price+"&min_price="
-  +min_price+"&cond="+cond+"&no_of_results="+no_of_results+"&page="+page;
+  let price_range = document.getElementById("price-range-select").value;
+  let max = 0;
+  let min = 0;
+  if(price_range == "Under Rs.2000"){
+    max = 2000;
+    min = 0;
+  }else if(price_range == "Rs.2000 to Rs.10,000"){
+    max = 10000;
+    min = 2000;
+  }else if(price_range == "Over Rs.10,000"){
+    max = 0;
+    min = 10000;
+  }
+  window.location.href = "?key="+key+"&cat="+cat+"&price_sort="+price_sort+"&max_price="+max+"&min_price="
+  +min+"&cond="+cond+"&no_of_results="+no_of_results+"&page="+page;
 }
+
 function filterOrderAdvancedSearch(key,cat,price_sort,max_price,min_price,cond,no_of_results,page){
-  let condition = document.getElementById("order-select").value;
-  window.location.href = "?key="+key+"&cat="+cat+"&price_sort="+price_sort+"&max_price="+max_price+"&min_price="
-  +min_price+"&cond="+condition+"&no_of_results="+no_of_results+"&page="+page;
+  let order = document.getElementById("order-select").value;
+  if(order == "Price heighest first"){
+    order = "DESC";
+  }else{
+    order = "ASC";
+  }
+  window.location.href = "?key="+key+"&cat="+cat+"&price_sort="+order+"&max_price="+max_price+"&min_price="
+  +min_price+"&cond="+cond+"&no_of_results="+no_of_results+"&page="+page;
 }
 
 $('.invoiceTarget')
