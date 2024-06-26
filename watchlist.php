@@ -40,7 +40,7 @@ include_once "connection.php";
     <div class="container-lg">
         <div class="col-12 mb-3 border-bottom py-2">
             <div class="row d-flex align-items-center justify-content-center gap-2">
-                
+
                 <div class="col d-flex flex-column flex-md-row gap-2">
                     <h2><i class="heart icon fs-4 text-danger"> </i>Watchlist</h2>
                 </div>
@@ -62,7 +62,7 @@ include_once "connection.php";
             <a href="home.php" class="section">ToyShop</a>
             <i class="right angle icon divider"></i>
             <a href="userProfile.php" class="section">Profile</a>
-                <i class="right angle icon divider"></i>
+            <i class="right angle icon divider"></i>
             <div class="active section mt-2">
                 Watchlist
             </div>
@@ -153,16 +153,22 @@ include_once "connection.php";
                                                                 <span class=" text-danger fw-bold fs-6">Out of Stock</span>
                                                                 <?php
                                                             } else if ($watchlist_data["quantity"] > 0) {
+                                                                $invoice_item = Database::execute("SELECT `product_product_id`,SUM(invoice_item_quantity) AS `product_count` FROM `invoice` 
+                                    INNER JOIN `invoice_item` ON `invoice`.`invoice_id`=`invoice_item`.`invoice_invoice_id` WHERE
+                                     `product_product_id` = '" . $watchlist_data['product_id'] . "'");
+
+                                                                $invoice_item_data = $invoice_item->fetch_assoc();
+
                                                                 if ($watchlist_data["quantity"] > 10) {
                                                                     ?>
                                                                         <span class=" fs-6">
-                                                                            More than 10 available <span class=""> / 20 Sold</span></span>
+                                                                            More than 10 available <span class=""> / <?php echo $invoice_item_data["product_count"] == null ? "0":$invoice_item_data["product_count"] ?> Sold</span></span>
                                                                     <?php
                                                                 } else {
                                                                     ?>
                                                                         <span class="fw-normal fs-6">
                                                                         <?php echo $watchlist_data["quantity"] ?>
-                                                                            items available <span class=""> / 20 Sold</span>
+                                                                            items available <span class=""> / <?php echo $invoice_item_data["product_count"] == null ? "0":$invoice_item_data["product_count"] ?> Sold</span>
                                                                         </span>
                                                                     <?php
                                                                 }
@@ -175,8 +181,9 @@ include_once "connection.php";
                                             </td>
 
                                             <td class="mb-3 ui right aligned">
-                                                <button onclick="addtoCart(<?php echo $watchlist_data['product_id'] ?>,1);toggleWatchList(<?php echo $watchlist_data['product_id'] ?>);"
-                                                class=" ui icon teal  button" <?php if ($watchlist_data["quantity"] == 0) { ?>disabled<?php } ?>>
+                                                <button
+                                                    onclick="addtoCart(<?php echo $watchlist_data['product_id'] ?>,1);toggleWatchList(<?php echo $watchlist_data['product_id'] ?>);"
+                                                    class=" ui icon teal  button" <?php if ($watchlist_data["quantity"] == 0) { ?>disabled<?php } ?>>
                                                     <b>+</b>
                                                     <i class="shop icon"></i>
                                                 </button>

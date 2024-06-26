@@ -33,7 +33,6 @@ if (!isset($_SESSION['user']['email'])) {
 
     <body id="bd">
         <?php include 'header.php'; ?>
-
         <div class="container-lg">
             <div class="col-12 mb-3 border-bottom py-2">
                 <div class="row d-flex align-items-center justify-content-center gap-2">                    
@@ -545,7 +544,7 @@ if (!isset($_SESSION['user']['email'])) {
                                                                         <?php
                                                                     } else if($invoice_data["invoice_status_invoice_status_id"] == 4){
                                                                         ?>
-                                                                            <span class="px-3 rounded-5">Confirmed</span>
+                                                                            <span style="background-color:#c6e2ff ;" class="px-3 rounded-5">Confirmed</span>
                                                                         <?php
                                                                     }else if($invoice_data["invoice_status_invoice_status_id"] == 5){
                                                                         ?>

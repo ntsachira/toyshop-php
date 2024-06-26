@@ -1287,7 +1287,7 @@ function loadReportFormOnCategory(){
       salesFormDiv.classList.add("d-none");
       rangeDiv.classList.remove("d-none");
       customerFormDiv.classList.remove("d-none");
-      sortDiv.classList.remove("d-none");     
+      sortDiv.classList.add("d-none");     
       generateButtonDiv.classList.remove("d-none");
       document.getElementById("registered-customers").checked = true;
       break;
@@ -1340,7 +1340,7 @@ function toggleFrequncySelectForSales(){
 function toggleCustomerReportType(){
   if(document.getElementById("registered-customers").checked){
     rangeDiv.classList.remove("d-none");      
-    sortDiv.classList.remove("d-none");    
+    sortDiv.classList.add("d-none");    
     generateButtonDiv.classList.remove("d-none");
     orderStatusDiv.classList.add("d-none");
   }else if(document.getElementById("orders-list").checked){
@@ -1504,5 +1504,57 @@ function printReport(){
   window.print();
   
   window.location.reload();
+}
+
+function loadCustomerReport(){
+  let range = "month";  
+  let status = [""];
+
+    // range
+    if(document.getElementById("six-months").checked){
+      range = "six_months";
+    }else if(document.getElementById("last-year").checked){
+      range = "last_year";
+    }else if(document.getElementById("two-year").checked){
+      range = "two_years";
+    } 
+
+    //status
+   
+      if(document.getElementById("status-awaiting").checked){
+        status.push("'Awaiting Confirm'");       
+      }
+      if(document.getElementById("status-confirmed").checked){
+        status.push("'Confirmed'");       
+      }
+      if(document.getElementById("status-packaging").checked){
+        status.push("'Packaging'");       
+      }
+      if(document.getElementById("status-out").checked){
+        status.push("'Out for Delivery'");        
+      }
+      if(document.getElementById("status-delivered").checked){
+        status.push("'Delivered'");        
+      }
+  
+
+
+    //load report
+    if(document.getElementById("registered-customers").checked){
+      $.get(
+        "process/loadregisteredCustomersReport.php?range="+range,
+        (res)=>{        
+          document.getElementById("report-content").innerHTML = res;
+        },
+      );
+    }else if(document.getElementById("orders-list").checked){
+      // alert(status.join(","));
+      $.get(
+        "process/loadOrderListReport.php?status="+status,
+        (res)=>{        
+          document.getElementById("report-content").innerHTML = res;
+        },
+      );
+    }
 }
 

@@ -34,19 +34,19 @@ if(isset($_GET["sort"]) && !empty($_GET["sort"])){
 }
 
 
-$category_result = Database::execute("SELECT category_id,category_name AS `name` ,
+$category_result = Database::execute("SELECT product_id,title AS `name` ,
 SUM(invoice_item_quantity*invoice_item_price)AS total, SUM(invoice_item_quantity) AS item_total FROM invoice 
 INNER JOIN invoice_item ON invoice_item.invoice_invoice_id = invoice.invoice_id INNER JOIN `product` ON
 invoice_item.product_product_id = product.product_id INNER JOIN`category` ON
 category.category_id = product.category_category_id
-$range GROUP BY category_id $sort");
+$range GROUP BY product_id $sort");
 
 
 ?>
 
 <div class="row">
     <div class="col-5 mb-2">
-        <h4>Sales By category Report (<?php echo $category_result->num_rows  ?>) - <?php echo $duration ?></h4>
+        <h4>Sales By Product Report (<?php echo $category_result->num_rows  ?>) - <?php echo $duration ?></h4>
     </div>
     <div class="col-7 d-flex mb-2">
         <span class="text-end w-100">Generated On: <b><?php echo $date->format("d M Y H:i:s") ?></b></span>
@@ -66,7 +66,7 @@ $range GROUP BY category_id $sort");
                 while ($category_data = $category_result->fetch_assoc()) {                  
                     ?>
                     <tr>
-                        <td><?php echo $category_data["category_id"] ?></td>
+                        <td><?php echo $category_data["product_id"] ?></td>
                         <td><?php echo $category_data["name"] ?></td>                        
                         <td class="text-center"> <?php echo $category_data["item_total"]  ?></td>
                         <td class="text-end"><?php echo number_format($category_data["total"], 2) ?></td>

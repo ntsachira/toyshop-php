@@ -51,7 +51,7 @@ if (!isset($_SESSION["admin"]["email"])) {
         <!-- search end -->
         <?php
         $user_result1 = Database::execute("SELECT * FROM `user` WHERE `email` != 'admin@gmail.com' AND 
-        (`email` LIKE '%" . $customer . "%' OR `mobile` LIKE '%" . $customer . "%' OR `first_name` LIKE '%" . $customer . "%' OR `last_name` LIKE '%" . $customer . "%' ) 
+        (`email` LIKE '%" . $customer . "%' OR `mobile` LIKE '%" . $customer . "%' OR `first_name` LIKE '%" . $customer . "%' OR `last_name` LIKE '%" . $customer . "%' )         
         ");
         $number_of_users = $user_result1->num_rows;
 
@@ -139,6 +139,7 @@ if (!isset($_SESSION["admin"]["email"])) {
                     <?php
                     $user_result = Database::execute("SELECT * FROM `user`  WHERE `email` != 'admin@gmail.com' AND
                     (`email` LIKE '%" . $customer . "%' OR `mobile` LIKE '%" . $customer . "%' OR `first_name` LIKE '%" . $customer . "%' OR `last_name` LIKE '%" . $customer . "%' ) 
+                    ORDER BY joined_date DESC
                     LIMIT $users_per_page OFFSET " . (($page - 1) * $users_per_page));
                     if ($user_result->num_rows > 0) {
                         while ($user_data = $user_result->fetch_assoc()) {

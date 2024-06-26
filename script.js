@@ -65,6 +65,8 @@ function signup() {
     if (response.status == "success") {
       showAlert(response.message, "success"); //Unhide and display the alert
       resetUserInput(); // clear user input on a successfull registration
+      alert("Registration Successfull");
+      changeView();
     } else {
       showAlert(response.message, "warning"); //Unhide and display the alert
     }

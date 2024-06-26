@@ -16,9 +16,9 @@ include 'connection.php';
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="icon" type="image/png" href="resource/logo.png">
     <link rel="stylesheet" href="style.css">
-     <!-- jQuery CDN -->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-                <!-- jQuery CDN -->
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- jQuery CDN -->
 </head>
 
 <body>
@@ -39,7 +39,7 @@ include 'connection.php';
             <!-- header -->
 
             <!-- Alert box -->
-           <?php include "alertBox.php"?>
+            <?php include "alertBox.php" ?>
             <!-- Alert box -->
 
             <!-- signUp form -->
@@ -52,27 +52,27 @@ include 'connection.php';
 
                     <div class="col-6 mb-3">
                         <label class="form-label">First Name</label>
-                        <input type="text" class="form-control" placeholder="ex:- John" id="fname" />
+                        <input type="text" class="form-control" placeholder="Enter first name" id="fname" />
                     </div>
 
                     <div class="col-6 mb-3">
                         <label class="form-label">Last Name</label>
-                        <input type="text" class="form-control" placeholder="ex:- Doe" id="lname" />
+                        <input type="text" class="form-control" placeholder="Enter last name" id="lname" />
                     </div>
 
                     <div class="col-12 mb-3">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-control" placeholder="ex:- john@gmail.com" id="email" />
+                        <input type="email" class="form-control" placeholder="Enter Email address" id="email" />
                     </div>
 
                     <div class="col-12 mb-3">
                         <label class="form-label">Password</label>
-                        <input type="password" class="form-control" placeholder="ex:- **********" id="password" />
+                        <input type="password" class="form-control" placeholder="Enter password" id="password" />
                     </div>
 
                     <div class="col-6">
                         <label class="form-label">Mobile</label>
-                        <input type="text" class="form-control" placeholder="ex:- 0771234568" id="mobile" />
+                        <input type="text" class="form-control" placeholder="Enter mobile" id="mobile" />
                     </div>
 
                     <div class="col-6 mb-3">
@@ -131,7 +131,8 @@ include 'connection.php';
 
                     <div class="col-12 mb-3">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-control needs-validation" id="email2" value="<?php echo $email; ?>" />
+                        <input type="email" class="form-control needs-validation" id="email2"
+                            value="<?php echo $email; ?>" />
                     </div>
                     <div class="col-12">
                         <label class="form-label">Password</label>
@@ -139,15 +140,17 @@ include 'connection.php';
                     </div>
                     <div class="col-6">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" <?php echo $rememberme; ?> id="rememberme" />
-                            <label for="rememberme"  class="form-check-label">Remember Me</label>
+                            <input class="form-check-input" type="checkbox" <?php echo $rememberme; ?>
+                                id="rememberme" />
+                            <label for="rememberme" class="form-check-label">Remember Me</label>
                         </div>
                     </div>
                     <div class="col-6 text-end">
-                    <div id="fogot-password-spinner" class="spinner-border d-none text-primary" style="width: 1rem; height: 1rem;" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <a href="#" class="link-primary" onclick="forgotPassword();">Forgot Password?</a>
+                        <div id="fogot-password-spinner" class="spinner-border d-none text-primary"
+                            style="width: 1rem; height: 1rem;" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <a href="#" class="link-primary" onclick="forgotPassword();">Forgot Password?</a>
                     </div>
                     <div class="col-12 mt-4 d-grid">
                         <button class="btn btn-blue" onclick="signin()">Sign In</button>
@@ -166,24 +169,30 @@ include 'connection.php';
                         <div class="modal-header">
                             <h5 class="modal-title"><span class="text-orange">ToyShop</span> | Reset Password</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>                        
+                        </div>
                         <div class="modal-body">
                             <!-- Display error messages -->
                             <div class="d-none d-flex justify-content-end " id="passwordresetModel-errorLabelDiv">
-                                <label  class="form-label " id="passwordresetModel-errorLabel"><!-- Error message --></label>                               
+                                <label class="form-label "
+                                    id="passwordresetModel-errorLabel"><!-- Error message --></label>
                             </div>
                             <!-- Display error messages -->
                             <div class="input-group mb-3">
-                                <input type="password" class="form-control" placeholder="Enter new Password" id="newPassword">
-                                <button class="btn btn-outline-secondary" type="button" id="newPasswordButton" onclick="toggleShowPassword('newPassword','newPasswordButton')">Show</button>
+                                <input type="password" class="form-control" placeholder="Enter new Password"
+                                    id="newPassword">
+                                <button class="btn btn-outline-secondary" type="button" id="newPasswordButton"
+                                    onclick="toggleShowPassword('newPassword','newPasswordButton')">Show</button>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="password" class="form-control" placeholder="Re-Enter new password" id="reEnterPassword">
-                                <button class="btn btn-outline-secondary" type="button" id="reEnterPasswordButton" onclick="toggleShowPassword('reEnterPassword','reEnterPasswordButton')">Show</button>
+                                <input type="password" class="form-control" placeholder="Re-Enter new password"
+                                    id="reEnterPassword">
+                                <button class="btn btn-outline-secondary" type="button" id="reEnterPasswordButton"
+                                    onclick="toggleShowPassword('reEnterPassword','reEnterPasswordButton')">Show</button>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Verification Code</label>
-                                <input type="text" class="form-control" id="verificationCode" placeholder="Check your email inbox for the Code">
+                                <input type="text" class="form-control" id="verificationCode"
+                                    placeholder="Check your email inbox for the Code">
                             </div>
                         </div>
                         <div class="modal-footer">

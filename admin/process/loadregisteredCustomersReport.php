@@ -22,31 +22,17 @@ if (isset($_GET["range"]) && !empty($_GET["range"])) {
     }
 }
 
-$range = " WHERE invoice.date > '".$start_date->format("Y-m-d H:i:s")."' ";
+$range = " WHERE joined_date > '".$start_date->format("Y-m-d H:i:s")."' ";
 
-$sort = "";
-if(isset($_GET["sort"]) && !empty($_GET["sort"])){
-    if($_GET["sort"] == "ASC"){
-        $sort = " ORDER BY `total` ASC ";
-    }else if($_GET["sort"] == "DESC"){
-        $sort = " ORDER BY `total` DESC ";
-    }
-}
-
-
-$category_result = Database::execute("SELECT category_id,category_name AS `name` ,
-SUM(invoice_item_quantity*invoice_item_price)AS total, SUM(invoice_item_quantity) AS item_total FROM invoice 
-INNER JOIN invoice_item ON invoice_item.invoice_invoice_id = invoice.invoice_id INNER JOIN `product` ON
-invoice_item.product_product_id = product.product_id INNER JOIN`category` ON
-category.category_id = product.category_category_id
-$range GROUP BY category_id $sort");
+$category_result = Database::execute("SELECT email,CONCAT(first_name,' ',last_name) AS `name`,mobile,joined_date 
+FROM user $range AND email != 'admin@gmail.com'");
 
 
 ?>
 
 <div class="row">
     <div class="col-5 mb-2">
-        <h4>Sales By category Report (<?php echo $category_result->num_rows  ?>) - <?php echo $duration ?></h4>
+        <h4>Customer List (<?php echo $category_result->num_rows  ?>) - <?php echo $duration ?></h4>
     </div>
     <div class="col-7 d-flex mb-2">
         <span class="text-end w-100">Generated On: <b><?php echo $date->format("d M Y H:i:s") ?></b></span>
@@ -55,10 +41,10 @@ $range GROUP BY category_id $sort");
         <table class="table table-bordered table-striped h-auto">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Email</th>
                     <th>Name</th>
-                    <th class="text-center">Sold</th>                    
-                    <th class="text-end">Revenue(Rs)</th>                   
+                    <th class="text-center">Mobile</th>                    
+                    <th class="text-center">Joined Date</th>     
                 </tr>
             </thead>
             <tbody>
@@ -66,11 +52,10 @@ $range GROUP BY category_id $sort");
                 while ($category_data = $category_result->fetch_assoc()) {                  
                     ?>
                     <tr>
-                        <td><?php echo $category_data["category_id"] ?></td>
+                        <td><?php echo $category_data["email"] ?></td>
                         <td><?php echo $category_data["name"] ?></td>                        
-                        <td class="text-center"> <?php echo $category_data["item_total"]  ?></td>
-                        <td class="text-end"><?php echo number_format($category_data["total"], 2) ?></td>
-                        
+                        <td class="text-center"> <?php echo $category_data["mobile"]  ?></td>
+                        <td class="text-center"> <?php echo $category_data["joined_date"]  ?></td>  
                     </tr>
                     <?php
                  
