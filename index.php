@@ -33,7 +33,7 @@ include 'connection.php';
                 </div>
                 <!-- logo block -->
                 <div class="d-flex justify-content-center">
-                    <span class="text-center text-blue fs-3">Hi, Welcome to <span class="">Toy Shop</span></span>
+                    <span class="text-center text-blue fs-3">Welcome to <span class="">Toy Shop</span></span>
                 </div>
             </div>
             <!-- header -->
@@ -95,11 +95,11 @@ include 'connection.php';
                     </div>
 
                     <div class="col-12 col-lg-6 d-grid">
-                        <button class="btn btn-blue" onclick="signup()">Sign Up</button>
+                        <button class="btn btn-blue" onclick="signup()">Register</button>
                     </div>
 
                     <div class="col-12 col-lg-6 d-grid">
-                        <button class="btn btn-default" onclick="changeView()">Already have an account? Sign In</button>
+                        <button class="btn btn-default" onclick="changeView()">Already registered? Sign In</button>
                     </div>
 
                 </div>
@@ -131,12 +131,12 @@ include 'connection.php';
 
                     <div class="col-12 mb-3">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-control needs-validation" id="email2"
+                        <input type="email" class="form-control needs-validation" id="email2" placeholder="Enter Email address"
                             value="<?php echo $email; ?>" />
                     </div>
                     <div class="col-12">
                         <label class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password2" value="<?php echo $password; ?>" />
+                        <input type="password" class="form-control" id="password2" placeholder="Enter Password" value="<?php echo $password; ?>" />
                     </div>
                     <div class="col-6">
                         <div class="form-check">
@@ -156,7 +156,7 @@ include 'connection.php';
                         <button class="btn btn-blue" onclick="signin()">Sign In</button>
                     </div>
                     <div class="col-12 mt-2 d-grid">
-                        <button class="btn btn-default" onclick="changeView();">New to eShop? Join Now</button>
+                        <button class="btn btn-default" onclick="changeView();">Are You New? Register Now</button>
                     </div>
                 </div>
             </div>
@@ -206,7 +206,7 @@ include 'connection.php';
 
             <!-- footer -->
             <div class="col-12 fixed-bottom">
-                <p class="text-center">2023 ToyShop.lk || All Rights Reserved</p>
+                <p class="text-center">2024 ToyShop.lk || All Rights Reserved</p>
             </div>
             <!-- footer -->
         </div>

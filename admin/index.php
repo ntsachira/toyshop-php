@@ -30,9 +30,7 @@ include '../connection.php';
                 </div>
                 <!-- logo block -->               
             </div>
-            <!-- header -->
-
-           
+            <!-- header -->          
 
             <!-- signIn form -->
             <div class="col-12 col-sm-7 col-lg-4 " id="signInBox">
@@ -59,7 +57,8 @@ include '../connection.php';
 
                     <div class="col-12">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-control needs-validation" id="admin-email" value="<?php echo $email; ?>" />
+                        <input type="email" class="form-control needs-validation" placeholder="Enter email address"
+                        id="admin-email" value="<?php echo $email; ?>" />
                     </div>
                    <?php 
                     $admin_result = Database::execute("SELECT * FROM `admin`");
@@ -68,7 +67,8 @@ include '../connection.php';
                         ?>
                          <div class="col-12">
                         <label class="form-label">Password</label>
-                        <input type="password" class="form-control" id="admin-password" value="<?php echo $password; ?>" />
+                        <input type="password" class="form-control" id="admin-password" placeholder="Enter password"
+                        value="<?php echo $password; ?>" />
                     </div>
                     <div class="col-6">
                         <div class="form-check">
@@ -98,7 +98,7 @@ include '../connection.php';
 
             <!-- footer -->
             <div class="col-12 fixed-bottom">
-                <p class="text-center">2023 ToyShop.lk || All Rights Reserved</p>
+                <p class="text-center">2024 ToyShop.lk || All Rights Reserved</p>
             </div>
             <!-- footer -->
         </div>

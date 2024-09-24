@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-
 <html>
-
-
-
 <body onload="reloadMessages();">
     <div class=" border-bottom border-info d-flex sticky-top bg-light bg-opacity-75 justify-content-center mb-2 rounded-bottom-5" id='header'>
         <div class="container-lg row py-2 align-items-center">
