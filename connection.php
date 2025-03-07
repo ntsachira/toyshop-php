@@ -3,7 +3,7 @@
 class DBdata{
     const HOST = "localhost";
     const USERNAME = "root";
-    const PASSWORD = "#Love0923";
+    const PASSWORD = "ntsachira";
     const DATABASE = "toyshopdb";
     const PORT = "3306";
 }
